@@ -8,7 +8,7 @@ mydb = mysql.connector.connect(
 print(mydb)
 cursor=mydb.cursor()
 """
-query= ("SELECT date, time, kwh FROM meterlogs.logs")
+query= ("SELECT date, time, kwh FROM tagmessages.logs")
 cursor.execute(query)
 for( time, date, kwh) in cursor:
   print("{}, {}, {}".format(date, time, kwh) )
