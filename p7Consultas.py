@@ -1,3 +1,4 @@
+import datetime
 import mysql.connector
 
 mydb = mysql.connector.connect(
@@ -7,20 +8,27 @@ mydb = mysql.connector.connect(
 )
 print(mydb)
 cursor=mydb.cursor()
+now = datetime.datetime.now()
 """
-query= ("SELECT date, time, kwh FROM meterlogs.logs")
+query= ("INSERT INTO tagmessages VALUES('EB01', '0002'," + int(seq) +"," + now.year+"-"+now.month+"-"+now.day + "," + now.hour+":"+now.minute+":"+now.second + "," + randon.random(-100,-50) +")")
 cursor.execute(query)
-for( time, date, kwh) in cursor:
-  print("{}, {}, {}".format(date, time, kwh) )
-"""
-query= ("SELECT date, time, kwh FROM meterlogs.logs WHERE time >%s AND time <%s AND date = %s")
-start_time= '21:00:00'
-end_time='22:00:00'
-miguel_date= '2019-02-26'
-cursor.execute(query, (start_time,end_time,miguel_date))
-for( time, date, kwh) in cursor:
-  print("{}, {}, {}".format(date, time, kwh) )
 
+"""
+seq = 0
+n = 1
+hora = '12:05:'
+seg = 0
+for i in range(n)
+	seq += 1
+	query= ("INSERT INTO tagmessages VALUES('EB01', '0002'," + int(seq) +"," + now.year+"-"+now.month+"-"+now.day + "," + hora+str(seg)+ "," + randon.random(-100,-50) +")")
+	cursor.execute(query)
+	seq += 1
+	query= ("INSERT INTO tagmessages VALUES('EB01', '0005'," + int(seq) +"," + now.year+"-"+now.month+"-"+now.day + "," + hora+str(seg) + "," + randon.random(-100,-50) +")")
+	cursor.execute(query)
+	seq += 1
+	query= ("INSERT INTO tagmessages VALUES('EB01', '0002'," + int(seq) +"," + now.year+"-"+now.month+"-"+now.day + "," + hora+str(seg) "," + randon.random(-100,-50) +")")
+	cursor.execute(query)
+	seg += 3
 
 cursor.close()
 mydb.close()
